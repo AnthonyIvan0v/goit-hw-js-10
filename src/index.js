@@ -34,28 +34,28 @@ function onCountriesFetch(evt) {
       return Notiflix.Notify.info('Too many matches found. Please enter a more specific name.', DEBOUNCE_DELAY)
     }
     if (countries.length >= 2) {
-      markupInfo(countries);
+      ceatemMarkupInfo(countries);
     }
     if (countries.length === 1) {
-      markupList(countries);
+        createmMarkupList(countries);
     }
   };
   
-  function markupInfo(countries) {
+  function ceatemMarkupInfo(countries) {
     const markupInfo = countries.map(({ name, flags, }) => {
       return `<li><img src="${flags.svg}" alt="Flag of ${name.official}" style="height: 80px; width: 100px"> ${name.official}</li>`
     }).join('');
     refs.countryList.innerHTML = markupInfo;
   };
   
-  function markupList(countries) {
+  function createmMarkupList(countries) {
     countries.map(({ name, capital, population, flags, languages }) => {
       const markup =
         `<h1><img src="${flags.svg}" alt="Flag of ${name.official}" style="height: 80px; width: 100px"> ${name.official}</h1>
           <p>Capital: ${capital}</p>
           <p>Population: ${population}</p>
           <p>Languages: ${Object.values(languages)}</p>`;
-          refs.countryInfo.innerHTML = markup;
+      refs.countryInfo.innerHTML = markup;
     })
   
   }
