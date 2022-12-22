@@ -15,13 +15,13 @@ const refs = {
 
 refs.searchBox.addEventListener('input', debounce(onCountriesFetch, DEBOUNCE_DELAY));
 
-function onCountriesFetch(evt) {
-    const inputValue = evt.target.value.trim();
-    if (inputValue.length === 0) {
+function onCountriesFetch(event) {
+    const name = event.target.value.trim();
+    if (name.length === 0) {
         refs.countryList.innerHTML = '';
       return;
     } else {
-      fetchCountries(inputValue)
+      fetchCountries(name)
         .then(showCountries)
         .catch(error)
     }
